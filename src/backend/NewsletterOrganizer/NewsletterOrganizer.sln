@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsletterOrganizer.CLI", "NewsletterOrganizer.CLI\NewsletterOrganizer.CLI.csproj", "{0C8DAE07-86AE-4145-AAAB-9B1015C18C20}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsletterOrganizer.Domain", "NewsletterOrganizer.Domain\NewsletterOrganizer.Domain.csproj", "{95BDB862-1C6D-48C4-94A6-3FA2DF8DA2DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsletterOrganizer.EntityFramework", "NewsletterOrganizer.EntityFramework\NewsletterOrganizer.EntityFramework.csproj", "{4F2B4F21-9C82-4F26-863C-DC531518B285}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NewsletterOrganizer.API", "NewsletterOrganizer.API\NewsletterOrganizer.API.csproj", "{B4585DF1-33E5-4FE7-BE0B-8FC6CAB34041}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0C8DAE07-86AE-4145-AAAB-9B1015C18C20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C8DAE07-86AE-4145-AAAB-9B1015C18C20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C8DAE07-86AE-4145-AAAB-9B1015C18C20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C8DAE07-86AE-4145-AAAB-9B1015C18C20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95BDB862-1C6D-48C4-94A6-3FA2DF8DA2DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95BDB862-1C6D-48C4-94A6-3FA2DF8DA2DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95BDB862-1C6D-48C4-94A6-3FA2DF8DA2DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95BDB862-1C6D-48C4-94A6-3FA2DF8DA2DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F2B4F21-9C82-4F26-863C-DC531518B285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F2B4F21-9C82-4F26-863C-DC531518B285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F2B4F21-9C82-4F26-863C-DC531518B285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F2B4F21-9C82-4F26-863C-DC531518B285}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4585DF1-33E5-4FE7-BE0B-8FC6CAB34041}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4585DF1-33E5-4FE7-BE0B-8FC6CAB34041}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4585DF1-33E5-4FE7-BE0B-8FC6CAB34041}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4585DF1-33E5-4FE7-BE0B-8FC6CAB34041}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
