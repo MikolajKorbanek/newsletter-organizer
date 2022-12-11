@@ -17,7 +17,6 @@ public sealed class ImapMailService : IMailService, IDisposable
 
     public ImapMailService WithUser(string username, string password)
     {
-        //TODO REMOVE nxytblzssniqzjdv
         _client.Authenticate(username, password);
         return this;
     }
