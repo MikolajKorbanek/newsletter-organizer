@@ -26,18 +26,59 @@ namespace NewsletterOrganizer.API.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("LanguageKey1")
-                        .HasColumnType("TEXT");
-
                     b.Property<string>("Word")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("LanguageKey1");
+                    b.HasIndex("LanguageKey");
 
                     b.ToTable("NewsletterWords");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            LanguageKey = "PL",
+                            Word = "Anuluj Subskrybcję"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            LanguageKey = "PL",
+                            Word = "Wypisz"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            LanguageKey = "PL",
+                            Word = "Newsletter"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            LanguageKey = "PL",
+                            Word = "Otrzymałeś tę wiadomość"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            LanguageKey = "EN",
+                            Word = "Unsubscribe"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            LanguageKey = "EN",
+                            Word = "Newsletter"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            LanguageKey = "EN",
+                            Word = "Subscription"
+                        });
                 });
 
             modelBuilder.Entity("NewsletterOrganizer.Domain.Settings.Language", b =>
@@ -52,6 +93,18 @@ namespace NewsletterOrganizer.API.Migrations
                     b.HasKey("LanguageKey");
 
                     b.ToTable("Languages");
+
+                    b.HasData(
+                        new
+                        {
+                            LanguageKey = "PL",
+                            Name = "Polski"
+                        },
+                        new
+                        {
+                            LanguageKey = "EN",
+                            Name = "English"
+                        });
                 });
 
             modelBuilder.Entity("NewsletterOrganizer.Domain.Users.EmailAccount", b =>
@@ -97,7 +150,9 @@ namespace NewsletterOrganizer.API.Migrations
                 {
                     b.HasOne("NewsletterOrganizer.Domain.Settings.Language", "Language")
                         .WithMany("NewsletterWords")
-                        .HasForeignKey("LanguageKey1");
+                        .HasForeignKey("LanguageKey")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Language");
                 });
