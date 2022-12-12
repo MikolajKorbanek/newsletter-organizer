@@ -46,7 +46,7 @@ public sealed class ImapMailService: IDisposable
         return _mailFolder.Count;
     }
 
-    public IEnumerable<MimeMessage> GetMessages()
+    public IEnumerable<MimeMessage> GetMessages(IProgress<int> progress)
     {
         var messages = new List<MimeMessage>();
         var messagesCount = GetMessageCount();
@@ -54,6 +54,8 @@ public sealed class ImapMailService: IDisposable
         for(var i = 0; i < messagesCount; i++)
         {
             var message = _mailFolder.GetMessage(i);
+            
+            progress?.Report((int)Math.Round((i/(double)messagesCount) * 100, 0));
 
             messages.Add(message);
         };

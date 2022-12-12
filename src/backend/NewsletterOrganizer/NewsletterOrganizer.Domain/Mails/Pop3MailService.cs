@@ -25,7 +25,7 @@ public class Pop3MailService
         return _client.Count;
     }
 
-    public IEnumerable<MimeMessage> GetMessages()
+    public IEnumerable<MimeMessage> GetMessages(IProgress<int> progress)
     {
         var messages = new List<MimeMessage>();
         var messagesCount = GetMessageCount();
@@ -33,6 +33,8 @@ public class Pop3MailService
         for(var i = 0; i < messagesCount; i++)
         {
             var message = _client.GetMessage(i);
+
+            progress?.Report((int)Math.Round((double)(i/messagesCount), 0));
 
             messages.Add(message);
         };

@@ -7,8 +7,14 @@ Console.WriteLine("Hello, World!");
 var client = new ImapMailService("imap.gmail.com", 993, true)
     .WithUser("", "")
     .FromInbox().Open();
-    
-var messages = client.GetMessages();
+
+
+var progressHandler = new Progress<int>((i) =>
+{
+    Console.WriteLine($"Progress: {i}%");
+});
+
+var messages = client.GetMessages(progressHandler);
 
 foreach (var msg in messages)
 {
