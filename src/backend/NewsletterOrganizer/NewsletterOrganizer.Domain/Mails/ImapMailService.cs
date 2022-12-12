@@ -1,6 +1,7 @@
 using System.Diagnostics;
 using MailKit;
 using MailKit.Net.Imap;
+using MailKit.Net.Pop3;
 using MimeKit;
 
 namespace NewsletterOrganizer.Domain.Mails;
