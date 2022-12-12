@@ -5,7 +5,7 @@ using NewsletterOrganizer.Domain.Mails;
 Console.WriteLine("Hello, World!");
 
 var client = new ImapMailService("imap.gmail.com", 993, true)
-    .WithUser("korbanek.mikolaj@gmail.com", "")
+    .WithUser("", "")
     .FromInbox().Open();
     
 var messages = client.GetMessages();

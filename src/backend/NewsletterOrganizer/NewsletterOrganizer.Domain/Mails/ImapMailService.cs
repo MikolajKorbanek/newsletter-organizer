@@ -6,7 +6,7 @@ using MimeKit;
 
 namespace NewsletterOrganizer.Domain.Mails;
 
-public sealed class ImapMailService : IMailService, IDisposable
+public sealed class ImapMailService: IDisposable
 {
     private readonly ImapClient _client;
     private IMailFolder? _mailFolder;
@@ -17,25 +17,25 @@ public sealed class ImapMailService : IMailService, IDisposable
         _client.Connect(host, port, useSSl);
     }
 
-    public IMailService WithUser(string username, string password)
+    public ImapMailService WithUser(string username, string password)
     {
         _client.Authenticate(username, password);
         return this;
     }
 
-    public IMailService FromInbox()
+    public ImapMailService FromInbox()
     {
         _mailFolder = _client.Inbox;
         return this;
     }
 
-    public IMailService FromSpecialFolder(SpecialFolder folder)
+    public ImapMailService FromSpecialFolder(SpecialFolder folder)
     {
         _mailFolder = _client.GetFolder(folder);
         return this;
     }
 
-    public IMailService Open()
+    public ImapMailService Open()
     {
         _mailFolder.Open(FolderAccess.ReadOnly);
         return this;
