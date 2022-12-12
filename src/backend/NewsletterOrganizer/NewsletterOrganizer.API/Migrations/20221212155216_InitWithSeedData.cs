@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace NewsletterOrganizer.API.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class InitWithSeedData : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -43,17 +45,17 @@ namespace NewsletterOrganizer.API.Migrations
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     LanguageKey = table.Column<string>(type: "TEXT", nullable: false),
-                    Word = table.Column<string>(type: "TEXT", nullable: false),
-                    LanguageKey1 = table.Column<string>(type: "TEXT", nullable: true)
+                    Word = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_NewsletterWords", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_NewsletterWords_Languages_LanguageKey1",
-                        column: x => x.LanguageKey1,
+                        name: "FK_NewsletterWords_Languages_LanguageKey",
+                        column: x => x.LanguageKey,
                         principalTable: "Languages",
-                        principalColumn: "LanguageKey");
+                        principalColumn: "LanguageKey",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -76,15 +78,38 @@ namespace NewsletterOrganizer.API.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "Languages",
+                columns: new[] { "LanguageKey", "Name" },
+                values: new object[,]
+                {
+                    { "EN", "English" },
+                    { "PL", "Polski" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "NewsletterWords",
+                columns: new[] { "Id", "LanguageKey", "Word" },
+                values: new object[,]
+                {
+                    { 1, "PL", "Anuluj Subskrybcję" },
+                    { 2, "PL", "Wypisz" },
+                    { 3, "PL", "Newsletter" },
+                    { 4, "PL", "Otrzymałeś tę wiadomość" },
+                    { 5, "EN", "Unsubscribe" },
+                    { 6, "EN", "Newsletter" },
+                    { 7, "EN", "Subscription" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_EmailAccounts_UserId",
                 table: "EmailAccounts",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_NewsletterWords_LanguageKey1",
+                name: "IX_NewsletterWords_LanguageKey",
                 table: "NewsletterWords",
-                column: "LanguageKey1");
+                column: "LanguageKey");
         }
 
         /// <inheritdoc />
